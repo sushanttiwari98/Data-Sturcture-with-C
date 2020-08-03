@@ -1,11 +1,18 @@
 //Interpolation Search.............Works oly for sorted array.
-/**/
+/*Time Complexity = O(n)
+  Space Complexity = O(1)*/
 #include<stdio.h>
 int interpolation_search(int a[],int data, int n)
 {
 	int low=0, high = (n-1),position;
 	while(low<=high && a[low]<=data && a[high]>=data)
 	{
+		if(low == high)
+		{
+			if(a[low] == data)
+			return low;
+		return -1;
+		}
 		position = low + ((data-a[low])*(high-low)/(a[high]-a[low]));
 		if(a[position]=data)
 		    return position;
@@ -14,6 +21,7 @@ int interpolation_search(int a[],int data, int n)
 		else
 		    high = position - 1;
 	}
+	return -1;
 }
 int main()
 {
